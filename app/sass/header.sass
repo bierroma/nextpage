@@ -1,0 +1,208 @@
+@import "vars"
+@import "colors"
+@import "mixins"
+
+.section__header
+  text-transform: uppercase
+  color: $light
+  text-shadow: 0 20px 90px rgba(36, 33, 31, 0.1)
+  letter-spacing: 0.05em
+  font-weight: 900
+  display: inline-block
+  line-height: 80px
+  top: 110px
+  z-index: 10
+  position: absolute
+  $map: (576px: 36px, 768px: 44px, 992px: 50px, 1800px: 140px)
+  +poly-fluid-sizing("font-size", $map)
+
+.process__tabs
+  background: $light
+  box-shadow: 0 30px 120px rgba(0, 0, 0, 0.2)
+  width: $content-w-desktop
+  height: 650px
+  position: relative
+  margin-bottom: -100px
+  z-index: 9
+  overflow: hidden
+
+.process__list
+  width: 25%
+  margin:
+    left: 8px
+    bottom: 70px
+  & span
+    font-size: 14px
+    color: $dark
+    opacity: .5
+    font-weight: 500
+  & .direction-arrow
+    display: block
+    line-height: 16px
+    position: absolute
+    left: 50%
+    margin-left: -4.5px
+    cursor: pointer
+    &.next
+      margin-top: 15px
+      bottom: -45px
+    &.prev
+      margin-bottom: 15px
+      top: -45px
+  & .next img
+    transform: rotate(180deg)
+
+.process__item
+  position: relative
+  line-height: 16px
+  cursor: pointer
+
+.process__item-number
+  transform: rotate(270deg)
+  padding: $padding-process
+  & span
+    font-size: 16px
+
+.process__item-caption
+  padding: $padding-process 0
+  &:hover span
+    color: $orange
+
+.process__list-numbers
+  background: $light
+  box-shadow: 0 20px 90px rgba(0, 0, 0, 0.15)
+  & .process__item
+    border-bottom: 2px solid #ebebea
+    &:before
+      content: ''
+      display: block
+      height: 0
+      width: 8px
+      background: $orange
+      transition: height 0.5s ease-out
+      position: absolute
+      top: 0
+      left: -8px
+    &:after
+      content: ''
+      display: block
+      height: 1px
+      width: 0
+      background: $orange
+      position: absolute
+      top: 50%
+      opacity: 0
+      left: 115px
+      z-index: 99
+      transition: opacity 1s, width 0.3s ease-out
+    &.active
+      &:before
+        height: 100%
+      &:after
+        opacity: 1
+        width: 210px
+        @include for-big-desktop-up
+          width: 325px
+      & span
+        opacity: 1
+        color: #f9c97b
+        font-weight: bold
+
+.process__list-captions
+  display: inline-block
+  padding-left: 57px
+  @include for-tablet-portrait-up
+    padding-left: 27px
+  .active
+    opacity: 0
+    visibility: hidden
+
+.process__tab
+  width: 100%
+  height: 100%
+  opacity: 0
+  visibility: hidden
+  position: absolute
+  transform: translate3d(0, 100px, 0)
+  top: 0
+  left: 0
+  padding:
+    top: 190px
+    bottom: 150px
+    left: 50px
+  overflow: hidden
+  transition: all 0.5s ease-in-out
+  &.active
+    opacity: 1
+    visibility: visible
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+
+.process__tab--title-block
+  padding-left: 40px
+  vertical-align: middle
+  display: inline-block
+  & .process__tab-title
+    font-weight: 800
+    color: $grey
+    $map: (576px: 24px, 768px: 26px, 992px: 20px, 1200px: 36px)
+    +poly-fluid-sizing("font-size", $map)
+
+.process__tab-img,
+.process__tab-content
+  @include for-big-desktop-up
+    width: 560px
+  width: 55.39215%
+  vertical-align: middle
+  display: inline-block
+
+.process__tab-img img
+  width: 100%
+
+.process__tab-content
+  font-size: 14px
+  line-height: 24px
+  @include for-big-desktop-up
+    margin-top: 75px
+  margin-top: 35px
+  letter-spacing: 0.025em
+
+.process__tab-description
+  color: $grey
+  opacity: .5
+  font-size: 17.25px
+
+.link-tab
+  color: #4d4d4d
+  opacity: .5
+  cursor: pointer
+  position: absolute
+  text-transform: uppercase
+  right: 80px
+  font-size: 10px
+  z-index: 10
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    height: 30px
+    width: 9px
+    background: url("../img/arrow-grey.png") center center no-repeat
+    background-size: cover
+    right: -20px
+    top: -50%
+    transition: all 0.2s ease-out
+  &.next
+    bottom: 70px
+    &:hover
+      &:after
+        background: url("../img/arrow-orange.png") center center no-repeat
+        background-size: cover
+    &:after
+      transform: rotate(180deg)
+  &.previous
+    top: 70px
+    &:hover
+      &:after
+        background: url("../img/arrow-orange.png") center center no-repeat
+        background-size: cover

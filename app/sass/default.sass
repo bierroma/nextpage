@@ -1,0 +1,74 @@
+@import "base"
+@import "mixins"
+
+.section--our-progress .section__container
+  padding-top: 130px
+  border:
+    left: 1px solid rgba(0,0,0,0.08)
+    right: 1px solid rgba(0,0,0,0.08)
+  @include for-phone-only
+    padding-top: 60px
+
+.hidden
+  display: none
+
+.section
+  position: relative
+
+.inline
+  box-sizing: border-box
+  display: inline-block
+  position: relative
+  padding: 0
+  margin: 0
+  vertical-align: bottom
+
+.flex-end
+  display: flex
+
+.text-right
+  text-align: right
+
+.text-left
+  text-align: left
+
+.text-center
+  text-align: center
+
+.pull-none
+  float: none
+
+.pull-left
+  float: left
+
+.pull-right
+  float: right
+
+.visible-xs
+  display: none
+  position: relative
+@include for-phone-only
+  .hidden-xs
+    display: none
+    position: relative
+
+@include for-phone-only
+  .visible-xs
+    display: block
+
+.section__container
+  margin:
+    left: auto
+    right: auto
+  position: relative
+
+  @include for-phone-only
+
+  @include for-tablet-portrait-up
+    width: 750px
+  @include for-tablet-landscape-up
+    width: 970px
+  @include for-desktop-up
+    width: 1170px
+  @include for-big-desktop-up
+    width: 1640px

@@ -1,0 +1,150 @@
+@import "vars"
+@import "colors"
+@import "mixins"
+
+//next-service-block
+
+.section--next-service
+  background: $bg-grey
+  padding:
+    top: 200px
+    bottom: 100px
+  @include for-big-desktop-up
+    & .section__content
+      display: flex
+      justify-content: flex-end
+      padding-right: 92px
+
+.next__service
+  padding:
+    left: 80px
+    right: 80px
+    top: 50px
+    bottom: 65px
+  border: 1px solid $frame-color
+  text-align: left
+  margin-left: calc(25% + 10px)
+  display: flex
+  float: inherit
+  justify-content: space-between
+  align-items: center
+  width: $content-w-desktop
+
+  & .next__service-title
+    font-size: 17.25px
+    color: $grey
+    opacity: .5
+    margin-bottom: 25px
+
+  & .next__service-caption
+    $map: (576px: 24px, 992px: 30px, 1800px: 44px)
+    +poly-fluid-sizing("font-size", $map)
+    letter-spacing: 0.025em
+    line-height: 24px
+    font-weight: bold
+    color: $dark-grey
+
+  & .next__service-button button
+    font-weight: bold
+    color: $button-color
+    position: relative
+    cursor: pointer
+    line-height: 10.5px
+    font-size: 10px
+    text-transform: uppercase
+    background: $light
+    border: 0
+    outline: none
+    width: 240px
+    @include for-big-desktop-up
+      width: 280px
+    text-align: center
+    padding:
+      bottom: 20px
+      top: 20px
+    &:after
+      content: ''
+      display: block
+      height: 4px
+      width: 90%
+      @include for-big-desktop-up
+        width: 240px
+        margin-left: -120px
+      background: $orange
+      position: absolute
+      bottom: 0
+      left: 50%
+      margin-left: -45%
+      z-index: 100
+    &:hover
+      color: #f2bf75
+    &:active
+      color: inherit
+
+//fixed-menu
+.fixed__menu
+  position: fixed
+  background: $light
+  z-index: 9999
+  top: 228px
+  right: 40px
+  padding-bottom: 40px
+  box-shadow: 0 30px 180px rgba(0, 0, 0, 0.24)
+  transition: all 0.5s ease-in-out
+
+.fixed__menu-item
+  text-align: center
+  margin: 20px 0 0
+  @include for-big-desktop-up
+    margin: 40px 0 0
+  &.active
+    position: relative
+    &:after
+      content: ''
+      display: block
+      height: 1px
+      width: 14px
+      background: #010101
+      position: absolute
+      top: 50%
+      right: 0
+    &:before
+      content: ''
+      display: block
+      height: 1px
+      width: 51px
+      opacity: 0.25
+      background: #010101
+      position: absolute
+      top: 50%
+      right: -51px
+
+.arrow_up
+  display: block
+  background: url("../img/arrow-grey.png") center center no-repeat
+  height: 50px
+  width: 50px
+  border-bottom: 2px solid #f0f0f0
+  &:hover
+    background: url("../img/arrow-orange.png") center center no-repeat
+  &:active
+    background: url("../img/arrow-active.png") center center no-repeat
+  @include for-big-desktop-up
+    height: 64px
+    width: 64px
+
+.fixed__menu-link
+  padding: 20px
+  display: block
+
+@each $image in mail, be, instagram, facebook
+  .#{$image}-fixed
+    background: url("../img/fixed-icon/#{$image}.png") center center no-repeat
+    transition: all 0.2s ease-in-out
+    position: relative
+    &:hover
+      background: url("../img/fixed-icon/#{$image}-hover.png") center center no-repeat
+    &:active
+      background: url("../img/fixed-icon/#{$image}-active.png") center center no-repeat
+
+//popup-contact-form
